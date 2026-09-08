@@ -36,3 +36,16 @@ deposit date. Values are an approximation of the real Degiro portfolio.
 
 `site/` is the whole deliverable — upload it anywhere static (GitHub Pages, Cloudflare Pages,
 Netlify). Root page is blank; each person gets `https://<host>/<token>/`.
+
+## GitHub Pages setup (one-time)
+
+1. Create an empty **public** repo `portfolio_tracker` on github.com (no README).
+2. In Terminal: `cd ~/Documents/portfolio_tracker && git push -u origin main`
+   (username = GitHub login, password = a personal access token with `repo` scope, or use SSH).
+3. On GitHub: Settings → Pages → Source: **GitHub Actions**. Settings → Actions → General →
+   Workflow permissions: **Read and write**.
+4. The workflow `.github/workflows/publish.yml` then runs on every push and every weekday at
+   17:15 UTC: fetches prices, commits the cache, rebuilds and deploys `site/`.
+
+Pages: `https://devnomad17.github.io/portfolio_tracker/<token>/` — tokens are in `config.json`.
+After adding a deposit to the workbook: `git commit -am "vklad" && git push` (or run the workflow manually).
