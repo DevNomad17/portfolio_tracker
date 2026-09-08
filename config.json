@@ -1,0 +1,73 @@
+{
+ "workbook": "rodina_portfolia.xlsm",
+ "key": {
+  "CSSPX": 0.4,
+  "R2US": 0.1,
+  "SPY4": 0.15,
+  "XXSC": 0.05,
+  "XSX6": 0.3
+ },
+ "tickers": {
+  "CSSPX": {
+   "yahoo": "CSSPX.MI",
+   "stooq": "csspx.it",
+   "name": "iShares Core S&P 500 UCITS ETF (Acc)",
+   "isin": "IE00B5BMR087"
+  },
+  "R2US": {
+   "yahoo": "R2US.MI",
+   "stooq": "r2us.it",
+   "name": "SPDR Russell 2000 US Small Cap UCITS ETF",
+   "isin": "IE00BJ38QD84"
+  },
+  "SPY4": {
+   "yahoo": "SPY4.MI",
+   "stooq": "spy4.it",
+   "name": "SPDR S&P 400 US Mid Cap UCITS ETF",
+   "isin": "IE00B4YBJ215"
+  },
+  "XXSC": {
+   "yahoo": "XXSC.MI",
+   "stooq": "xxsc.it",
+   "name": "Xtrackers MSCI Europe Small Cap UCITS ETF 1C",
+   "isin": "LU0322253906"
+  },
+  "XSX6": {
+   "yahoo": "XSX6.MI",
+   "stooq": "xsx6.it",
+   "name": "Xtrackers STOXX Europe 600 UCITS ETF 1C",
+   "isin": "LU0328475792"
+  }
+ },
+ "people": {
+  "tana": {
+   "name": "Táňa",
+   "sheet": "tana_nina",
+   "token": "8PadMD3DIL1a1tcW"
+  },
+  "nina": {
+   "name": "Nina",
+   "sheet": "tana_nina",
+   "token": "0ZSUq3oZY2-a8c18"
+  },
+  "filip": {
+   "name": "Filip",
+   "sheet": "filip_riso",
+   "token": "yzm0fxqMi3Iw_TV7"
+  },
+  "riso": {
+   "name": "Rišo",
+   "sheet": "filip_riso",
+   "token": "M5gVH7LlWTt7Q0WW"
+  },
+  "pali": {
+   "name": "Pali",
+   "sheet": "pali",
+   "token": "W027zMSNJfLOtLCO"
+  }
+ },
+ "price_cache_dir": "data/prices",
+ "site_dir": "site",
+ "exports_dir": "exports",
+ "history_start": "2020-12-01"
+}
