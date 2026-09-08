@@ -42,28 +42,23 @@
  "people": {
   "tana": {
    "name": "Táňa",
-   "sheet": "tana_nina",
-   "token": "8PadMD3DIL1a1tcW"
+   "sheet": "tana_nina"
   },
   "nina": {
    "name": "Nina",
-   "sheet": "tana_nina",
-   "token": "0ZSUq3oZY2-a8c18"
+   "sheet": "tana_nina"
   },
   "filip": {
    "name": "Filip",
-   "sheet": "filip_riso",
-   "token": "yzm0fxqMi3Iw_TV7"
+   "sheet": "filip_riso"
   },
   "riso": {
    "name": "Rišo",
-   "sheet": "filip_riso",
-   "token": "M5gVH7LlWTt7Q0WW"
+   "sheet": "filip_riso"
   },
   "pali": {
    "name": "Pali",
-   "sheet": "pali",
-   "token": "W027zMSNJfLOtLCO"
+   "sheet": "pali"
   }
  },
  "price_cache_dir": "data/prices",

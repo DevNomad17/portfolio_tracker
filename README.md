@@ -19,7 +19,7 @@ Other commands:
 
 ## Layout
 
-- `config.json` – distribution key (40/10/15/5/30), tickers, people + their secret URL tokens
+- `config.json` – distribution key (40/10/15/5/30), tickers, people (URL path = person id)
 - `tracker/ledger.py` – reads the workbook (validates dates/amounts, refuses bad rows)
 - `tracker/prices.py` – price cache (`data/prices/<T>.csv`) and updater
 - `tracker/engine.py` – virtual-units calculation, daily value series, yearly summary (TWR)
@@ -35,7 +35,7 @@ deposit date. Values are an approximation of the real Degiro portfolio.
 ## Publishing
 
 `site/` is the whole deliverable — upload it anywhere static (GitHub Pages, Cloudflare Pages,
-Netlify). Root page is blank; each person gets `https://<host>/<token>/`.
+Netlify). Root page is blank; each person gets `https://<host>/<id>/` (tana, nina, filip, riso, pali).
 
 ## GitHub Pages setup (one-time)
 
@@ -47,5 +47,5 @@ Netlify). Root page is blank; each person gets `https://<host>/<token>/`.
 4. The workflow `.github/workflows/publish.yml` then runs on every push and every weekday at
    17:15 UTC: fetches prices, commits the cache, rebuilds and deploys `site/`.
 
-Pages: `https://devnomad17.github.io/portfolio_tracker/<token>/` — tokens are in `config.json`.
+Pages: `https://devnomad17.github.io/portfolio_tracker/tana/` (nina, filip, riso, pali likewise).
 After adding a deposit to the workbook: `git commit -am "vklad" && git push` (or run the workflow manually).

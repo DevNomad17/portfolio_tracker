@@ -70,13 +70,13 @@ def render(cfg, p, prices, deposits_note=None):
     h.append("<section><h2>Vývoj hodnoty</h2><svg id='chart' viewBox='0 0 900 320'></svg><div id='tip' class='tip'></div>"
              "<div class='legend'><span><i style='background:#2b5ea8'></i>hodnota portfólia</span><span><i style='background:#9a9a94'></i>vložené peniaze</span></div></section>")
     h.append("<section><h2>Jednotlivé vklady</h2><div class='wrap'><table><thead><tr><th>Dátum</th><th class='t'>Od koho</th><th>Vklad</th><th>Hodnota dnes</th><th>Zisk / strata</th><th>%</th></tr></thead><tbody>")
-    for r in rows:
+    for r in reversed(rows):
         h.append(f"<tr><td>{sk(r['date'])}</td><td class='t'>{html.escape(r['note'])}</td><td>{eur2(r['amount'])}</td><td>{eur2(r['value'])}</td>"
                  f"<td class='{cls(r['gain'])}'>{'+' if r['gain']>=0 else ''}{eur2(r['gain'])}</td><td class='{cls(r['gain'])}'>{pct(r['gain_pct'])}</td></tr>")
     h.append(f"</tbody><tfoot><tr><td colspan='2'>Spolu ({len(rows)} vkladov)</td><td>{eur2(p.total_deposits)}</td><td>{eur2(p.value)}</td>"
              f"<td class='{cls(p.gain)}'>{'+' if p.gain>=0 else ''}{eur2(p.gain)}</td><td class='{cls(p.gain)}'>{pct(p.gain_pct)}</td></tr></tfoot></table></div></section>")
     h.append("<section><h2>Po rokoch</h2><div class='wrap'><table><thead><tr><th>Rok</th><th>Hodnota na začiatku</th><th>Vklady v roku</th><th>Hodnota na konci</th><th>Zisk / strata</th><th>Výnos (TWR)</th></tr></thead><tbody>")
-    for y in ys:
+    for y in reversed(ys):
         lab = f"{y['year']}{' (do ' + sk(p.as_of) + ')' if y['partial'] else ''}"
         h.append(f"<tr><td>{lab}</td><td>{eur(y['start'])}</td><td>{eur(y['deposits'])}</td><td>{eur(y['end'])}</td>"
                  f"<td class='{cls(y['gain'])}'>{'+' if y['gain']>=0 else ''}{eur(y['gain'])}</td><td class='{cls(y['twr_pct'])}'>{pct(y['twr_pct'])}</td></tr>")
@@ -94,15 +94,15 @@ def render(cfg, p, prices, deposits_note=None):
 def build_site(cfg, portfolios, prices):
     site = abspath(cfg, cfg["site_dir"])
     os.makedirs(site, exist_ok=True)
-    # blank landing page so the site root reveals nothing
+    # blank landing page at the site root
     with open(os.path.join(site, "index.html"), "w", encoding="utf-8") as f:
         f.write("<!doctype html><meta charset='utf-8'><meta name='robots' content='noindex'><title>Portfólio</title>")
     out = {}
     for pid, p in portfolios.items():
-        tok = cfg["people"][pid]["token"]
-        d = os.path.join(site, tok); os.makedirs(d, exist_ok=True)
+        slug = cfg["people"][pid].get("slug", pid)
+        d = os.path.join(site, slug); os.makedirs(d, exist_ok=True)
         path = os.path.join(d, "index.html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(render(cfg, p, prices))
-        out[pid] = f"{tok}/"
+        out[pid] = f"{slug}/"
     return out
